@@ -19,8 +19,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 
 // middleware parser json
-app.use(cors())
 app.use(express.json())
+app.use(cors())
+
 
 // routes
 app.use('/', blogPostsRoute)
