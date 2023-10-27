@@ -1,0 +1,152 @@
+GET http://localhost:5055/authors
+
+
+####
+POST http://localhost:5055/authors/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Massimiliano",
+  "cognome": "Morici",
+  "email": "morici@gmail.com",
+  "password": "lamiapassword",
+  "dataDiNascita": "23/08/1992",
+  "avatar": "https://static.vecteezy.com/system/resources/thumbnails/000/192/818/small/T_3-01.jpg"
+}
+
+##### login
+
+POST http://localhost:5055/login
+Content-Type: application/json
+
+{
+    "email": "incredibile",
+    "password": "lamiapassword"
+}
+
+##### login
+
+POST http://localhost:5055/login
+Content-Type: application/json
+
+{
+    "email": "morici@gmail.com",
+    "password": "asdasd"
+}
+
+####
+PATCH http://localhost:5055/authors/update/65367385c102c0241ee42f38
+Content-Type: application/json
+
+{
+  "nome": "massimiliano",
+  "cognome": "morici"
+}
+
+
+#####
+
+GET http://localhost:5055/authors/65367367c102c0241ee42f36/blogPost
+
+
+
+
+
+
+####
+DELETE http://localhost:5055/authors/delete/6535563479788779c9a80771
+
+####
+GET http://localhost:5055/blogPosts/bytitle?title=proviamo?&page=1&pageSize=4
+
+
+################################################################################
+
+POST http://localhost:5055/blogPosts/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "category": "2",
+  "title": "p2o",
+  "avatar": "https://static.vecteezy.com/system/resources/thumbnails/000/192/818/small/T_3-01.jpg",
+  "readTime": {
+    "value": 10,
+    "unit": "min"
+  },
+  "author": "65367367c102c0241ee42f36",
+  "content": "prima prova"
+}
+
+################################################################################
+#### crea commento in specifico post
+
+POST http://localhost:5055/blogPosts/6536ae9c369cdc4e44519bd3/createComment HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "asdfgasssssssssasdasdadqweqe3213123sssssefasf commento",
+  "content": "seconda prova commento",
+  "author": "65367367c102c0241ee42f36",
+  "blogPost": "6536ae9c369cdc4e44519bd3"
+}
+ 
+
+##### get tutti i commenti in specifico post
+ 
+GET http://localhost:5055/blogPosts/viewComments/6536ae9c369cdc4e44519bd7
+
+##### get commento specifico in specifico post
+
+GET http://localhost:5055/blogPosts/653686050b441ce5e907da63/viewComments/6536af4ffaecc56e350d5761
+
+
+##### elimina commento specifico in specifico post
+
+DELETE http://localhost:5055/blogPosts/653686050b441ce5e907da63/deleteComment/6536aea2369cdc4e44519bd5 
+
+
+#### GET BY TITLE
+GET http://localhost:5055/blogPosts/byTitle?title=p2o
+
+#######
+
+GET http://localhost:5055/blogPosts/65399b3b152a5baadd69807b
+
+#####################
+POST http://localhost:5055/blogPosts/65381b35ab45164f7bfdc89d/createComment HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "asdfgasssssssssasdasdadqweqe3213123sssssefasf commento",
+  "content": "seconda prova commento",
+  "author": "65385e90edd35dce3913853c",
+  "blogPost": "65381b35ab45164f7bfdc89d"
+}
+
+##########
+
+DELETE http://localhost:5055/blogPosts/65381b35ab45164f7bfdc89d/deleteComment/653a780b5426c21c6a21fc60
+
+##########
+
+
+PUT http://localhost:5055/blogPosts/65381b35ab45164f7bfdc89d/updateComment/653a8aa67e30788c97519971 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "modifica commento",
+  "content": "terza prova commento",
+  "author": "65367367c102c0241ee42f36",
+  "blogPost": "65381b35ab45164f7bfdc89d"
+}
+
+#####
+
+POST http://localhost:5055/send-email
+Content-Type: application/json
+
+
+{
+    "subject": "PROVA",
+    "text": "prova testo"
+}
